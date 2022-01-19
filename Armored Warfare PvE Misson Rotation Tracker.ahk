@@ -65,7 +65,7 @@ Transform, rVar, Mod, %newTime%, 30
 HEADER_LOW_EASY := "T1-3 Standard"
 HEADER_LOW_HARD := "T1-2 Hardcore"
 HEADER_MID_EASY := "T4-6 Standard"
-HEADER_MID_HARD := "T3-6 Hardcore"
+HEADER_MID_HARD := "T4-6 Hardcore"
 HEADER_HIGH_EASY := "T7-10 Standard"
 HEADER_HIGH_HARD := "T7-10 Hardcore"
 
@@ -136,10 +136,10 @@ return
 EverySecond:
 newTime := A_Hour * 3600 + A_Min * 60 + A_Sec - OffsetMinVar * 60 - OffsetSecVar + 9000
 Loop 10 {
-	newTime -= 180
-	Transform, rVar, Mod, %newTime%, 1800
-	cVar:=1800-rVar
-	if(cVar < 180){
+	newTime -= 360
+	Transform, rVar, Mod, %newTime%, 3600
+	cVar:=3600-rVar
+	if(cVar < 360){
 		mVar:=AZ(floor(cVar/60))
 		sVar:=AZ(mod(cVar,60))
 		Gui, Font, cRed
@@ -147,7 +147,7 @@ Loop 10 {
 		GuiControl, Font, CD%A_Index%
 	}
 	else{
-		cVar -= 180
+		cVar -= 360
 		nextTime =
 		nextTime += %cVar%, seconds
 		FormatTime, nextTime, %nextTime%, HH:mm
